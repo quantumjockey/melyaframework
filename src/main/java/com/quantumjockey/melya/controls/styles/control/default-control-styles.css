@@ -1,0 +1,25 @@
+.label-highlight {
+    -fx-alignment: CENTER;
+    -fx-padding: 7;
+    -fx-spacing: 5;
+}
+
+.slider {
+    -fx-padding: 2 13 2 13;
+}
+
+.text-field {
+    -fx-pref-width: 100;
+}
+
+.titled-pane {
+    -fx-alignment: CENTER;
+    -fx-animated: false;
+    -fx-collapsible: false;
+    -fx-content-display: CENTER;
+    -fx-padding: 2;
+}
+
+.tree-view {
+    -fx-pref-width: 600;
+}

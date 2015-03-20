@@ -20,23 +20,32 @@ public class WindowInitializer {
         this.windowLoader = new FXMLLoader();
         this.windowLoader.setController(controllerInstance);
         this.windowRoot = this.windowLoader.load(callingObject.getResource(markupFileName));
+        this.appendDefaultCssStyles();
     }
 
     /////////// Public Methods ////////////////////////////////////////////////////////////////
 
     public void appendCssStyles(String cssFilename, Class callingObject){
-        styleSheets.add(callingObject.getResource(cssFilename).toExternalForm());
+        this.styleSheets.add(callingObject.getResource(cssFilename).toExternalForm());
     }
 
     public Scene getScene() {
         Scene window = new Scene(this.windowRoot);
-        if (styleSheets.size() != 0)
-            window.getStylesheets().addAll(styleSheets);
+        if (this.styleSheets.size() != 0)
+            window.getStylesheets().addAll(this.styleSheets);
         return window;
     }
 
     public Scene getScene(int height, int width){
         return new Scene(this.windowRoot, width, height);
+    }
+
+    /////////// Private Methods ///////////////////////////////////////////////////////////////
+
+    private void appendDefaultCssStyles(){
+        String stylesheetBasePath = "/com/quantumjockey/melya/controls/styles/";
+        this.styleSheets.add(this.getClass().getResource(stylesheetBasePath + "control/default-control-styles.css").toExternalForm());
+        this.styleSheets.add(this.getClass().getResource(stylesheetBasePath + "layout/default-layout-styles.css").toExternalForm());
     }
 
 }

@@ -1,0 +1,27 @@
+.grid-pane-2 {
+    -fx-padding: 2;
+}
+
+.hbox-2 {
+    -fx-alignment: CENTER;
+    -fx-padding: 2;
+    -fx-spacing: 5;
+}
+
+.hbox-5 {
+    -fx-alignment: CENTER;
+    -fx-padding: 5;
+    -fx-spacing: 5;
+}
+
+.hbox-7 {
+    -fx-alignment: CENTER;
+    -fx-padding: 7;
+    -fx-spacing: 5;
+}
+
+.vbox-5 {
+    -fx-alignment: CENTER;
+    -fx-padding: 5;
+    -fx-spacing: 5;
+}
