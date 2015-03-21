@@ -84,7 +84,7 @@ public class DoubleAdjusterController extends MarkupControllerBase {
     @FXML
     public void increment() {
         if (this.getDisplayedValue() < this.getMaxValue() && this.getDisplayedValue() >= this.getMinValue()) {
-            double result = getDisplayedValue() + this.increment;
+            double result = this.getDisplayedValue() + this.increment;
             this.setDisplayedValue(result);
         }
     }
@@ -124,11 +124,11 @@ public class DoubleAdjusterController extends MarkupControllerBase {
 
     @Override
     protected void setDefaults() {
-        setLimiters(SLIDER_MIN_DEFAULT, SLIDER_MAX_DEFAULT);
-        setDisplayedValue(SLIDER_MIN_DEFAULT);
+        this.setLimiters(this.SLIDER_MIN_DEFAULT, this.SLIDER_MAX_DEFAULT);
+        this.setDisplayedValue(this.SLIDER_MIN_DEFAULT);
         this.adjustment.setShowTickMarks(true);
         this.adjustment.setShowTickLabels(true);
-        this.increment = INCREMENT_DEFAULT;
+        this.increment = this.INCREMENT_DEFAULT;
     }
 
     @Override

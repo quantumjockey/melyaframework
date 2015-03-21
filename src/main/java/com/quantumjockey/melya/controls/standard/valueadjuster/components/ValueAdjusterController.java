@@ -7,7 +7,6 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Slider;
 import javafx.scene.control.TextField;
 import javafx.util.converter.NumberStringConverter;
-
 import java.text.NumberFormat;
 
 public class ValueAdjusterController extends MarkupControllerBase {
@@ -118,8 +117,8 @@ public class ValueAdjusterController extends MarkupControllerBase {
 
     @Override
     protected void setDefaults() {
-        this.setLimiters(SLIDER_MIN_DEFAULT, SLIDER_MAX_DEFAULT);
-        this.setDisplayedValue(SLIDER_MIN_DEFAULT);
+        this.setLimiters(this.SLIDER_MIN_DEFAULT, this.SLIDER_MAX_DEFAULT);
+        this.setDisplayedValue(this.SLIDER_MIN_DEFAULT);
         this.adjustment.setShowTickMarks(true);
         this.adjustment.setShowTickLabels(true);
     }
