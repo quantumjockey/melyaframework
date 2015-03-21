@@ -1,6 +1,7 @@
 package com.quantumjockey.melya.controls.standard.zoomableimageview.components;
 
 import com.quantumjockey.melya.controls.standard.doubleadjuster.DoubleAdjuster;
+import com.quantumjockey.melya.delegateinterfaces.Func;
 import com.quantumjockey.melya.markup.MarkupControllerBase;
 import javafx.beans.property.DoubleProperty;
 import javafx.beans.property.SimpleDoubleProperty;
@@ -40,6 +41,7 @@ public class ZoomableImageViewController extends MarkupControllerBase {
     private ScrollPane scrollViewport;
 
     private Image cachedImage;
+    private Func<String, Integer, Integer> captionAppendageWithYXArguments;
 
     /////////// Accessors ///////////////////////////////////////////////////////////////////
 
@@ -101,6 +103,10 @@ public class ZoomableImageViewController extends MarkupControllerBase {
 
     /////////// Public Methods //////////////////////////////////////////////////////////////
 
+    public void addToCaption(Func<String, Integer, Integer> appendage){
+        this.captionAppendageWithYXArguments = appendage;
+    }
+
     public void render(Image image) throws IOException {
         if (image != null) {
             this.getImageViewport().setSmooth(false);
@@ -158,10 +164,12 @@ public class ZoomableImageViewController extends MarkupControllerBase {
 
             // (imageY - scaledY) used for display to represent 0,0 in bottom-left corner of image
             String activeCoordinatesLabel = ((this.getZoomLevel() < 1) ? "[Approximate] " : "")
-                    + "Coordinates (x,y): " + scaledX + "," + scaledYFlipped;
+                    + "Coordinates (x,y): " + scaledX + "," + scaledYFlipped
+                    + ((captionAppendageWithYXArguments != null) ? " - " + captionAppendageWithYXArguments.call(scaledYFlipped, scaledX) : "");
 
             String tooltip = ((this.getZoomLevel() < 1) ? "[Approx.] " : "")
-                    + "(x,y): " + scaledX + "," + scaledYFlipped;
+                    + "(x,y): " + scaledX + "," + scaledYFlipped
+                    + ((captionAppendageWithYXArguments != null) ? System.getProperty("line.separator") + captionAppendageWithYXArguments.call(scaledYFlipped, scaledX) : "");
 
             this.getPixelTrack().setText(activeCoordinatesLabel);
             this.getScrollViewport().setTooltip(new Tooltip(tooltip));
