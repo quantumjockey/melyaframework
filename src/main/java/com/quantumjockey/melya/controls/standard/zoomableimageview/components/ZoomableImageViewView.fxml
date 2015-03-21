@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.quantumjockey.melya.controls.standard.doubleadjuster.DoubleAdjuster?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.*?>
+
+<fx:root styleClass="grid-pane-2" type="javafx.scene.layout.GridPane" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.quantumjockey.melya.controls.standard.zoomableimageview.components.ZoomableImageViewController">
+    <columnConstraints>
+        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
+    </columnConstraints>
+    <rowConstraints>
+        <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+    </rowConstraints>
+    <children>
+        <VBox>
+            <children>
+                <ScrollPane fx:id="scrollViewport" pannable="true" GridPane.rowIndex="0" styleClass="render-window">
+                    <ImageView fx:id="imageViewport" pickOnBounds="true" preserveRatio="true" />
+                </ScrollPane>
+                <DoubleAdjuster fx:id="imageZoom" />
+                <Label fx:id="pixelTrack" GridPane.rowIndex="1" prefHeight="30"/>
+            </children>
+        </VBox>
+    </children>
+</fx:root>
