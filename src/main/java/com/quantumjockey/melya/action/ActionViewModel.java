@@ -10,7 +10,7 @@ import java.util.concurrent.Callable;
  as accessed on 10/19/2014.
  */
 
-public class ActionDelegate<T> {
+public class ActionViewModel<T> {
 
     /////////// Fields //////////////////////////////////////////////////////////////////////
 
@@ -25,7 +25,7 @@ public class ActionDelegate<T> {
 
     /////////// Constructors ////////////////////////////////////////////////////////////////
 
-    public ActionDelegate(String id, Callable<T> action){
+    public ActionViewModel(String id, Callable<T> action){
         this.action = action;
         setIdentifier(id);
     }
