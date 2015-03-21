@@ -7,7 +7,6 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Slider;
 import javafx.scene.control.TextField;
 import javafx.util.converter.NumberStringConverter;
-
 import java.text.NumberFormat;
 
 public class DoubleAdjusterController extends MarkupControllerBase {
@@ -21,10 +20,10 @@ public class DoubleAdjusterController extends MarkupControllerBase {
     /////////// Fields //////////////////////////////////////////////////////////////////////
 
     @FXML
-    private TextField value;
+    private Slider adjustment;
 
     @FXML
-    private Slider adjustment;
+    private TextField value;
 
     private double increment;
 
@@ -114,11 +113,6 @@ public class DoubleAdjusterController extends MarkupControllerBase {
     }
 
     /////////// Protected Methods ///////////////////////////////////////////////////////////
-
-    @Override
-    protected void createCustomControls() {
-
-    }
 
     @Override
     protected void setBindings() {

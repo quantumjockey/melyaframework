@@ -6,12 +6,6 @@ import java.util.ResourceBundle;
 
 public abstract class MarkupControllerBase implements Initializable {
 
-    /////////// Constructors //////////////////////////////////////////////////////////////////
-
-    public MarkupControllerBase() {
-        this.createCustomControls();
-    }
-
     /////////// Public Methods ////////////////////////////////////////////////////////////////
 
     @Override
@@ -23,8 +17,6 @@ public abstract class MarkupControllerBase implements Initializable {
     }
 
     /////////// Protected Methods /////////////////////////////////////////////////////////////
-
-    protected abstract void createCustomControls();
 
     protected abstract void setBindings();
 

@@ -111,11 +111,6 @@ public class FileGroupSelectorController extends MarkupControllerBase {
     /////////// Protected Methods ///////////////////////////////////////////////////////////
 
     @Override
-    protected void createCustomControls() {
-
-    }
-
-    @Override
     protected void setBindings() {
         this.hierarchyHeader.textProperty().bindBidirectional(this.headerProperty());
         this.fileSelection.tooltipProperty().bindBidirectional(this.tooltipProperty());

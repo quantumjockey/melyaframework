@@ -109,11 +109,6 @@ public class ValueAdjusterController extends MarkupControllerBase {
     /////////// Protected Methods ///////////////////////////////////////////////////////////
 
     @Override
-    protected void createCustomControls() {
-
-    }
-
-    @Override
     protected void setBindings() {
         this.value.textProperty().bindBidirectional(this.displayedValueProperty(), new NumberStringConverter(NumberFormat.getNumberInstance()));
         this.adjustment.maxProperty().bindBidirectional(this.maxValueProperty());
