@@ -13,7 +13,6 @@ public abstract class WindowControllerBase implements Initializable {
     /////////// Constructor(s) ////////////////////////////////////////////////////////////////
 
     public WindowControllerBase(){
-        this.createCustomControls();
         this.isActive = true;
     }
 
@@ -26,7 +25,6 @@ public abstract class WindowControllerBase implements Initializable {
 
     /////////// Protected Methods /////////////////////////////////////////////////////////////
 
-    protected abstract void createCustomControls();
     protected abstract void performInitializationTasks();
 
 }
