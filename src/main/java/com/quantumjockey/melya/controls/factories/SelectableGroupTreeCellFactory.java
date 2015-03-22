@@ -41,17 +41,15 @@ public class SelectableGroupTreeCellFactory extends TreeCell<String> {
             super.setGraphic(null);
         } else {
             if (isEditing()) {
-                if (this.textField != null) {
+                if (this.textField != null)
                     this.textField.setText(getItem());
-                }
                 super.setText(null);
                 super.setGraphic(this.textField);
             } else {
                 super.setText(super.getItem());
                 super.setGraphic(super.getTreeItem().getGraphic());
-                if (!super.getTreeItem().isLeaf() && super.getTreeItem().getParent() != null) {
+                if (!super.getTreeItem().isLeaf() && super.getTreeItem().getParent() != null)
                     super.setContextMenu(this.addMenu);
-                }
             }
         }
     }
