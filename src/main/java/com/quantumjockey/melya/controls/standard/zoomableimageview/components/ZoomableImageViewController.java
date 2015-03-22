@@ -46,7 +46,7 @@ public class ZoomableImageViewController extends MarkupControllerBase {
     /////////// Accessors ///////////////////////////////////////////////////////////////////
 
     public ImageView getImageViewport() {
-        return imageViewport;
+        return this.imageViewport;
     }
 
     public Label getPixelTrack() {
@@ -109,10 +109,10 @@ public class ZoomableImageViewController extends MarkupControllerBase {
 
     public void render(Image image) throws IOException {
         if (image != null) {
+            this.cachedImage = image;
             this.getImageViewport().setSmooth(false);
             this.getImageViewport().setImage(image);
             this.updateZoomScale(image);
-            this.cachedImage = image;
         }
     }
 
