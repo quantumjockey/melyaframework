@@ -1,13 +1,16 @@
 package com.quantumjockey.melya.controls.initialization;
 
+import javafx.scene.control.Label;
 import org.junit.After;
 import org.junit.Before;
+import org.junit.Test;
 
 public class LabelInitializerTest {
 
     /////////// Fields //////////////////////////////////////////////////////////////////////
 
-    // All the fields I need to run my tests right here.
+    Label mysteryLabel;
+    LabelInitializer priorities;
 
     /////////// Setup/Teardown //////////////////////////////////////////////////////////////
 
@@ -23,6 +26,19 @@ public class LabelInitializerTest {
 
     /////////// Tests ///////////////////////////////////////////////////////////////////////
 
-    // All the requirements I should be shooting for in unit test form here.
+    @Test
+    public void Constructor_NullObject_handleNullPointerException(){
+
+    }
+
+    @Test
+    public void Update_NullText_GenerateTextDefault(){
+
+    }
+
+    @Test
+    public void Update_NullTooltip_GenerateTooltipDefault(){
+
+    }
 
 }

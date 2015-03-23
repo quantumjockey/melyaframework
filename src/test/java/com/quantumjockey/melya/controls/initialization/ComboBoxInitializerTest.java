@@ -1,19 +1,26 @@
 package com.quantumjockey.melya.controls.initialization;
 
+import javafx.scene.control.ComboBox;
 import org.junit.After;
 import org.junit.Before;
+import org.junit.Test;
+import java.util.ArrayList;
 
 public class ComboBoxInitializerTest {
 
     /////////// Fields //////////////////////////////////////////////////////////////////////
 
-    // All the fields I need to run my tests right here.
+    ArrayList<String> allTheChoices;
+    ComboBox<String> mysteryBox;
+    ComboBoxInitializer<String> priorities;
 
     /////////// Setup/Teardown //////////////////////////////////////////////////////////////
 
     @Before
     public void setUp() throws Exception {
-        // ALL the setup I should be doing.
+        this.allTheChoices = new ArrayList<>();
+        this.allTheChoices.add("Thing One");
+        this.allTheChoices.add("Thing Two");
     }
 
     @After
@@ -23,6 +30,14 @@ public class ComboBoxInitializerTest {
 
     /////////// Tests ///////////////////////////////////////////////////////////////////////
 
-    // All the requirements I should be shooting for in unit test form here.
+    @Test
+    public void Constructor_NullObject_handleNullPointerException(){
+
+    }
+
+    @Test
+    public void Populate_ListArgumentNull_CreateEmptyList(){
+
+    }
 
 }
