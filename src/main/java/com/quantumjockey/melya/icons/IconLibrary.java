@@ -24,43 +24,55 @@ public class IconLibrary {
 
     private final String basePath = "/com/quantumjockey/melya/icons/images/";
 
-    private final Image folderIcon = this.getResourceImage(this.basePath + "empty_folder.png");
-    private final Image groupIcon = this.getResourceImage(this.basePath + "image_group.png");
-    private final Image invertIcon = this.getResourceImage(this.basePath + "invert.png");
-    private final Image rootIcon = this.getResourceImage(this.basePath + "data_group.png");
-    private final Image rotateLeftIcon = this.getResourceImage(this.basePath + "rotate_left.png");
-    private final Image rotateRightIcon = this.getResourceImage(this.basePath + "rotate_right.png");
+    private final String folderIcon = this.basePath + "empty_folder.png";
+    private final String groupIcon = this.basePath + "image_group.png";
+    private final String invertIcon = this.basePath + "invert.png";
+    private final String rootIcon = this.basePath + "data_group.png";
+    private final String rotateLeftIcon = this.basePath + "rotate_left.png";
+    private final String rotateRightIcon = this.basePath + "rotate_right.png";
+
+    private int size;
 
     /////////// Accessors ///////////////////////////////////////////////////////////////////
 
     public Image getFolderIcon() {
-        return this.folderIcon;
+        return this.getResourceImage(this.folderIcon, this.size);
     }
 
     public Image getGroupIcon() {
-        return this.groupIcon;
+        return this.getResourceImage(this.groupIcon, this.size);
     }
 
     public Image getInvertIcon() {
-        return this.invertIcon;
+        return this.getResourceImage(this.invertIcon, this.size);
     }
 
     public Image getRootIcon() {
-        return this.rootIcon;
+        return this.getResourceImage(this.rootIcon, this.size);
     }
 
     public Image getRotateLeftIcon() {
-        return this.rotateLeftIcon;
+        return this.getResourceImage(this.rotateLeftIcon, this.size);
     }
 
     public Image getRotateRightIcon() {
-        return this.rotateRightIcon;
+        return this.getResourceImage(this.rotateRightIcon, this.size);
+    }
+
+    /////////// Constructor(s) //////////////////////////////////////////////////////////////
+
+    public IconLibrary(int size) {
+        this.size = size;
+    }
+
+    public IconLibrary() {
+        this(16);
     }
 
     /////////// Private Methods /////////////////////////////////////////////////////////////
 
-    private Image getResourceImage(String path) {
-        return new Image(getClass().getResourceAsStream(path));
+    private Image getResourceImage(String path, int size) {
+        return new Image(this.getClass().getResourceAsStream(path), size, size, true, true);
     }
 
 }
