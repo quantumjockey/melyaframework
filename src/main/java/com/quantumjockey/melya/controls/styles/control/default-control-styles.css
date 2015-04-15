@@ -4,6 +4,11 @@
     -fx-spacing: 5;
 }
 
+.label-padded {
+    -fx-alignment: CENTER;
+    -fx-padding: 5;
+}
+
 .slider {
     -fx-padding: 2 13 2 13;
 }

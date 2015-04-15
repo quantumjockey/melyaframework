@@ -23,13 +23,18 @@
                 <HBox>
                     <children>
                         <DoubleAdjuster fx:id="imageZoom" HBox.hgrow="ALWAYS" />
-                        <HBox styleClass="button-control-row">
+                        <VBox>
                             <children>
-                                <Button fx:id="rotateLeftButton" onAction="#rotateImageLeft" />
-                                <Button fx:id="rotateRightButton" onAction="#rotateImageRight" />
-                                <Button fx:id="invertButton" onAction="#invertImage" />
+                                <Label fx:id="rotationAngle" styleClass="label-padded" />
+                                <HBox styleClass="button-control-row">
+                                    <children>
+                                        <Button fx:id="rotateLeftButton" onAction="#rotateImageLeft" />
+                                        <Button fx:id="rotateRightButton" onAction="#rotateImageRight" />
+                                        <Button fx:id="invertButton" onAction="#invertImage" />
+                                    </children>
+                                </HBox>
                             </children>
-                        </HBox>
+                        </VBox>
                     </children>
                 </HBox>
                 <Label fx:id="pixelTrack" GridPane.rowIndex="1" prefHeight="30"/>

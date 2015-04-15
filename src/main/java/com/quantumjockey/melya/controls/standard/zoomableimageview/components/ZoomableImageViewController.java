@@ -45,6 +45,9 @@ public class ZoomableImageViewController extends MarkupControllerBase {
     private Label pixelTrack;
 
     @FXML
+    private Label rotationAngle;
+
+    @FXML
     private Button rotateLeftButton;
 
     @FXML
@@ -219,6 +222,10 @@ public class ZoomableImageViewController extends MarkupControllerBase {
         }
     }
 
+    private void displayImageRotation(Number angle){
+        this.rotationAngle.setText("Rotated " + this.getImageRotation() + " degrees");
+    }
+
     private void initializeButtons() {
         IconLibrary library = new IconLibrary(30);
 
@@ -282,6 +289,7 @@ public class ZoomableImageViewController extends MarkupControllerBase {
         this.setZoomDefaults();
         this.initializeButtons();
         this.setImageRotation(0.0);
+        this.displayImageRotation(0.0);
     }
 
     @Override
@@ -301,6 +309,9 @@ public class ZoomableImageViewController extends MarkupControllerBase {
 
         ChangeListener<Number> onZoomChange = (observable, oldValue, newValue) -> this.resizeImageView(newValue);
 
+        ChangeListener<Number> onRotationAngleChange = (observable, oldValue, newValue) -> this.displayImageRotation(newValue);
+
+        this.imageRotationProperty().addListener(onRotationAngleChange);
         this.zoomLevelProperty().addListener(onZoomChange);
     }
 
