@@ -5,6 +5,7 @@
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.*?>
+<?import javafx.scene.control.Button?>
 
 <fx:root styleClass="grid-pane-2" type="javafx.scene.layout.GridPane" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.quantumjockey.melya.controls.standard.zoomableimageview.components.ZoomableImageViewController">
     <columnConstraints>
@@ -19,7 +20,18 @@
                 <ScrollPane fx:id="scrollViewport" pannable="true" GridPane.rowIndex="0" styleClass="render-window">
                     <ImageView fx:id="imageViewport" pickOnBounds="true" preserveRatio="true" />
                 </ScrollPane>
-                <DoubleAdjuster fx:id="imageZoom" />
+                <HBox>
+                    <children>
+                        <DoubleAdjuster fx:id="imageZoom" HBox.hgrow="ALWAYS" />
+                        <HBox styleClass="button-control-row">
+                            <children>
+                                <Button fx:id="rotateLeftButton" onAction="#rotateImageLeft" />
+                                <Button fx:id="rotateRightButton" onAction="#rotateImageRight" />
+                                <Button fx:id="invertButton" onAction="#invertImage" />
+                            </children>
+                        </HBox>
+                    </children>
+                </HBox>
                 <Label fx:id="pixelTrack" GridPane.rowIndex="1" prefHeight="30"/>
             </children>
         </VBox>

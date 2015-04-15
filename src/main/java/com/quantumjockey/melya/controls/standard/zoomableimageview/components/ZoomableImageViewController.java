@@ -1,13 +1,16 @@
 package com.quantumjockey.melya.controls.standard.zoomableimageview.components;
 
+import com.quantumjockey.melya.controls.initialization.ButtonInitializer;
 import com.quantumjockey.melya.controls.standard.doubleadjuster.DoubleAdjuster;
 import com.quantumjockey.melya.delegateinterfaces.Func;
+import com.quantumjockey.melya.icons.IconLibrary;
 import com.quantumjockey.melya.markup.MarkupControllerBase;
 import javafx.beans.property.DoubleProperty;
 import javafx.beans.property.SimpleDoubleProperty;
 import javafx.beans.value.ChangeListener;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.control.Tooltip;
@@ -25,6 +28,7 @@ public class ZoomableImageViewController extends MarkupControllerBase {
 
     private final double AUTO_ZOOM_INCREMENT = 0.5;
     private final double DEFAULT_ZOOM_MAX = 6.0;
+    private final double ROTATION_INCREMENT = 90.0;
 
     /////////// Fields //////////////////////////////////////////////////////////////////////
 
@@ -35,7 +39,16 @@ public class ZoomableImageViewController extends MarkupControllerBase {
     private DoubleAdjuster imageZoom;
 
     @FXML
+    private Button invertButton;
+
+    @FXML
     private Label pixelTrack;
+
+    @FXML
+    private Button rotateLeftButton;
+
+    @FXML
+    private Button rotateRightButton;
 
     @FXML
     private ScrollPane scrollViewport;
@@ -58,6 +71,21 @@ public class ZoomableImageViewController extends MarkupControllerBase {
     }
 
     /////////// Properties //////////////////////////////////////////////////////////////////
+
+    public final double getImageRotation() {
+        return this.imageRotation.get();
+    }
+
+    public final void setImageRotation(double imageRotation) {
+        this.imageRotation.set(this.imageViewport.getRotate() + imageRotation);
+        this.imageViewport.setRotate(this.getImageRotation());
+    }
+
+    public DoubleProperty imageRotationProperty() {
+        return this.imageRotation;
+    }
+
+    private DoubleProperty imageRotation = new SimpleDoubleProperty();
 
     private DoubleProperty maxZoom = new SimpleDoubleProperty();
 
@@ -103,8 +131,13 @@ public class ZoomableImageViewController extends MarkupControllerBase {
 
     /////////// Public Methods //////////////////////////////////////////////////////////////
 
-    public void addToCaption(Func<String, Integer, Integer> appendage){
+    public void addToCaption(Func<String, Integer, Integer> appendage) {
         this.captionAppendageWithYXArguments = appendage;
+    }
+
+    @FXML
+    public void invertImage() {
+        this.setImageRotation(this.ROTATION_INCREMENT * 2.0);
     }
 
     public void render(Image image) throws IOException {
@@ -114,6 +147,16 @@ public class ZoomableImageViewController extends MarkupControllerBase {
             this.getImageViewport().setImage(image);
             this.updateZoomScale(image);
         }
+    }
+
+    @FXML
+    public void rotateImageLeft() {
+        this.setImageRotation(this.ROTATION_INCREMENT * (-1));
+    }
+
+    @FXML
+    public void rotateImageRight() {
+        this.setImageRotation(this.ROTATION_INCREMENT);
     }
 
     public void setZoomBounds(double min, double max) {
@@ -176,6 +219,22 @@ public class ZoomableImageViewController extends MarkupControllerBase {
         }
     }
 
+    private void initializeButtons() {
+        IconLibrary library = new IconLibrary(30);
+
+        ButtonInitializer rotateLeft = new ButtonInitializer(this.rotateLeftButton);
+        rotateLeft.setSkin(library.getRotateLeftIcon());
+        rotateLeft.setTooltip("Rotate Counter-Clockwise");
+
+        ButtonInitializer rotateRight = new ButtonInitializer(this.rotateRightButton);
+        rotateRight.setSkin(library.getRotateRightIcon());
+        rotateRight.setTooltip("Rotate Clockwise");
+
+        ButtonInitializer invert = new ButtonInitializer(this.invertButton);
+        invert.setSkin(library.getInvertIcon());
+        invert.setTooltip("Invert");
+    }
+
     private void resizeImageView(Number newValue) {
         if (this.cachedImage != null) {
             double vVal = this.getScrollViewport().getVvalue();
@@ -221,6 +280,8 @@ public class ZoomableImageViewController extends MarkupControllerBase {
     protected void setDefaults() {
         this.getPixelTrack().setFont(Font.font(null, FontWeight.BOLD, 13));
         this.setZoomDefaults();
+        this.initializeButtons();
+        this.setImageRotation(0.0);
     }
 
     @Override

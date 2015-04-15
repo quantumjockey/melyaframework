@@ -1,3 +1,8 @@
+.button-control-row {
+    -fx-alignment: CENTER;
+    -fx-spacing: 3;
+}
+
 .grid-pane-2 {
     -fx-padding: 2;
 }
