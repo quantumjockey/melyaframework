@@ -152,6 +152,11 @@ public class ZoomableImageViewController extends MarkupControllerBase {
         }
     }
 
+    public void resetRotation(){
+        double difference = this.getImageRotation();
+        this.setImageRotation(difference * -1.0);
+    }
+
     @FXML
     public void rotateImageLeft() {
         this.setImageRotation(this.ROTATION_INCREMENT * (-1));
