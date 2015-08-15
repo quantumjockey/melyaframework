@@ -2,7 +2,7 @@
 
 An application framework for building JavaFX apps with MVVM-like architecture.
 
-# Requirements
+## Requirements
 
 In order to begin development with this repository, the JDK and the latest release for Java 8 should be installed on your machine.
 
@@ -15,7 +15,7 @@ If the JDK and/or Java 8 is/are not installed on your machine:
 
 Your development environment is now ready for Java.
 
-# Instructions
+## Instructions
 
 Next, clone this repository to your machine.
 
@@ -69,5 +69,38 @@ One last thing:
 2.  If the org.junit packages for jUnit4 have not been loaded, click "Fix" in the popup that displays the error for missing jUnit packages
 
 All jUnit4 packages should be attached to the module project and you should be ready to run unit tests.
+
+## Directory Structure
+
+In attempt to keep a standardized format for applications using this framework, the following directory structure within each sources root is recommended based on trial-and-error:
+
+    \(sources directory)
+        \controls
+            \(module for fxml control)
+                \components
+                    (module)*Controller.java
+                    (module)*Styles.css
+                    (module)*View.fxml
+                (module)*.java
+            \(another module)
+                ...(etc)
+        \filesystem
+            (file system io/streaming sources)
+        \mainwindow
+            MainWindowController.java
+            MainWindowStyles.css
+            MainWindowView.fxml
+        \workspaces
+            \(module for fxml-based application workspace)
+                \components
+                    (module)*Controller.java
+                    (module)*Styles.css
+                    (module)*View.fxml
+                (module)*.java
+            \(another module)
+                ...(etc)
+        Main.java
+
+This seems to work best for projects I've used this with so far, but if you feel something different may work better, feel free to give it a try!
 
 Happy development!
