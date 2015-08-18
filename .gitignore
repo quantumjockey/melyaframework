@@ -40,6 +40,8 @@ Temporary Items
 .idea/
 *.iml
 target/
+project/target/
+project/project/target/
 lib/
 out/
 META-INF/
