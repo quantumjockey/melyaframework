@@ -10,6 +10,10 @@ public class TimedTask {
 
     public static void run(Runnable action, long interval) {
         Timer timer = new java.util.Timer();
+        runWithTimer(timer, action, interval);
+    }
+
+    public static void runWithTimer(Timer timer, Runnable action, long interval) {
         timer.schedule(new TimerTask() {
             public void run() {
                 Platform.runLater(action);
