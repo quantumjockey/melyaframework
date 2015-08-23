@@ -6,14 +6,20 @@ import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 
-public class AlertWindow extends ModalWindow {
+public class ConfirmationWindow extends ModalWindow {
+
+    /////////// Fields ////////////////////////////////////////////////////////////////////////
+
+    private Runnable actionUponConfirmation;
 
     /////////// Constructors //////////////////////////////////////////////////////////////////
 
-    public AlertWindow(String title, String message) {
+    public ConfirmationWindow(String title, String message, Runnable action) {
         this.initializeModalWindow(title, message);
+        this.actionUponConfirmation = action;
     }
 
     /////////// Private Methods ///////////////////////////////////////////////////////////////
@@ -26,10 +32,20 @@ public class AlertWindow extends ModalWindow {
         messageText.setWrapText(true);
         messageText.setStyle("-fx-padding: 5;");
 
-        Button response = new Button("Ok");
-        response.setOnAction((event) -> this.modalDialog.close());
+        Button okResponse = new Button("Ok");
+        okResponse.setOnAction((event) -> {
+            this.actionUponConfirmation.run();
+            this.modalDialog.close();
+        });
 
-        box.getChildren().addAll(messageText, response);
+        Button cancelResponse = new Button("Cancel");
+        cancelResponse.setOnAction((event) -> this.modalDialog.close());
+
+        HBox buttonContainer = new HBox(this.HORIZONTAL_SPACING);
+        buttonContainer.getChildren().addAll(cancelResponse, okResponse);
+        buttonContainer.setAlignment(Pos.CENTER);
+
+        box.getChildren().addAll(messageText, buttonContainer);
         box.setAlignment(Pos.CENTER);
         box.setPadding(new Insets(this.BOX_PADDING));
         this.modalDialog.setScene(new Scene(box));
