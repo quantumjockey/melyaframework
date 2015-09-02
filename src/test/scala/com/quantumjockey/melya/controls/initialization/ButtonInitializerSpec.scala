@@ -1,9 +1,9 @@
 package com.quantumjockey.melya.controls.initialization
 
-import javafx.scene.control.Button
-import javafx.scene.image.{ImageView, Image}
 import com.quantumjockey.melya.icons.IconLibrary
 import com.quantumjockey.melya.test.JavaFXSpecRunner
+import javafx.scene.control.Button
+import javafx.scene.image.{ImageView, Image}
 import org.scalatest.{BeforeAndAfter, FunSpec}
 
 class ButtonInitializerSpec extends FunSpec with JavaFXSpecRunner with BeforeAndAfter {
