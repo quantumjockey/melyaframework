@@ -22,7 +22,7 @@ public class IconLibrary {
 
     /////////// Fields //////////////////////////////////////////////////////////////////////
 
-    private final String basePath = "/com/quantumjockey/melya/icons/images/";
+    private final String basePath = "/images/";
 
     private final String folderIcon = this.basePath + "empty_folder.png";
     private final String groupIcon = this.basePath + "image_group.png";
