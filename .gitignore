@@ -18,8 +18,8 @@ $RECYCLE.BIN/
 *.lnk
 
 # OSX meta
-.DS_Store
 .AppleDouble
+.DS_Store
 .LSOverride
 
 # Thumbnails
@@ -30,11 +30,11 @@ $RECYCLE.BIN/
 .Trashes
 
 # Directories potentially created on remote AFP share
+.apdisk
 .AppleDB
 .AppleDesktop
 Network Trash Folder
 Temporary Items
-.apdisk
 
 # SBT-generated folders
 es
