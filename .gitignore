@@ -36,13 +36,22 @@ Network Trash Folder
 Temporary Items
 .apdisk
 
-# IntelliJ IDEA project components
-.idea/
-*.iml
-target/
+# SBT-generated folders
+es
+lib/
+META-INF/
+out/
 project/target/
 project/project/target/
-lib/
-out/
-META-INF/
-es
+target/
+
+# IntelliJ-specific files and folders
+.idea/
+.idea_modules/
+*.iml
+
+# Eclipse-specific files and folders
+.classpath
+.project
+.sbtserver/
+.settings/
