@@ -13,18 +13,18 @@ public class BasicTimer {
 
     /////////// Properties //////////////////////////////////////////////////////////////////
 
-    private IntegerProperty secondsElapsedFromConnectionStart = new SimpleIntegerProperty();
+    private IntegerProperty secondsElapsedFromStart = new SimpleIntegerProperty();
 
-    public final int getSecondsElapsedFromConnectionStart() {
-        return this.secondsElapsedFromConnectionStart.get();
+    public final int getSecondsElapsedFromStart() {
+        return this.secondsElapsedFromStart.get();
     }
 
-    public final void setSecondsElapsedFromConnectionStart(int secondsElapsedFromConnectionStart) {
-        this.secondsElapsedFromConnectionStart.set(secondsElapsedFromConnectionStart);
+    public final void setSecondsElapsedFromStart(int secondsElapsedFromStart) {
+        this.secondsElapsedFromStart.set(secondsElapsedFromStart);
     }
 
-    public IntegerProperty secondsElapsedFromConnectionStartProperty() {
-        return this.secondsElapsedFromConnectionStart;
+    public IntegerProperty secondsElapsedFromStartProperty() {
+        return this.secondsElapsedFromStart;
     }
 
     /////////// Constructor /////////////////////////////////////////////////////////////////
@@ -38,7 +38,7 @@ public class BasicTimer {
     public void start() {
         this.timerSeconds = 0;
         TimedTask.runWithTimer(this.timer, () -> {
-            this.setSecondsElapsedFromConnectionStart(timerSeconds);
+            this.setSecondsElapsedFromStart(timerSeconds);
             timerSeconds++;
         }, 1000);
     }
